@@ -1,0 +1,128 @@
+.main_why_section {
+    margin-bottom: 90px;
+}
+
+.main_why {
+    h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .grid {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+
+        .card {
+            width: 100%;
+            max-width: 226px;
+
+            .svg {
+                max-width: 60px;
+                max-height: 60px;
+                min-height: 60px;
+                min-width: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 10px;
+                background-color: #EBF4FD;
+                margin-bottom: 20px;
+
+                img {
+                    max-width: 30px;
+                    max-height: 30px;
+                    min-height: 30px;
+                    min-width: 30px;
+                    object-fit: contain;
+                    object-position: center;
+                }
+            }
+
+            h3 {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 140%;
+                letter-spacing: 0%;
+                margin-bottom: 8px;
+            }
+
+            .default {
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                letter-spacing: 0%;
+                margin: 0;
+                color: #4B5563;
+
+                * {
+                    font-family: Tilda Sans;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 150%;
+                    letter-spacing: 0%;
+                    color: #4B5563;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .main_why .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 20px;
+    }
+}
+
+@media (max-width: 720px) {
+    .main_why .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .main_why_section {
+        margin-bottom: 50px;
+    }
+
+    .main_why {
+        h2 {
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: flex;
+            justify-content: start;
+            align-items: start;
+            flex-direction: column;
+            gap: 10px;
+            row-gap: 10px;
+
+            .card {
+                max-width: none;
+                display: grid;
+                grid-template-columns: min-content 1fr;
+                gap: 8px 20px;
+
+                .svg {
+                    grid-row: 2 span;
+                }
+
+                h3 {
+                    grid-column: 2/3;
+                    grid-row: 1/2;
+                    margin: 0;
+                }
+
+                .default {
+                    grid-column: 2/3;
+                    grid-row: 2/3;
+                }
+            }
+        }
+    }
+}

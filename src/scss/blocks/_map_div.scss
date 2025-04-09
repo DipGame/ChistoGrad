@@ -1,0 +1,178 @@
+.map_section {
+    border-top: 1px solid #D1E2EB
+}
+
+.map_div {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    padding: 90px 0;
+
+    .contact_cont {
+        width: 100%;
+        max-width: 470px;
+
+        h3 {
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 130%;
+            letter-spacing: 0%;
+            margin-bottom: 15px;
+        }
+
+        .subtext {
+            font-family: Tilda Sans;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 28px;
+            letter-spacing: 0%;
+            margin-bottom: 35px;
+        }
+
+        .before_phone::before {
+            background-image: url('./../img/call.svg');
+        }
+
+        .before_email::before {
+            background-image: url('./../img/mail.svg');
+        }
+
+        .before_adres::before {
+            background-image: url('./../img/map-pin.svg');
+        }
+
+        .before_1 {
+            margin-bottom: 20px;
+        }
+
+        .phone {
+            font-family: Tilda Sans;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 100%;
+            letter-spacing: 0%;
+
+        }
+
+        .email {
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0%;
+        }
+
+        .adres {
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0%;
+        }
+
+        .svg_links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 25px;
+
+            .svg_link {
+                height: fit-content;
+
+                svg {
+                    max-width: 40px;
+                    max-height: 40px;
+                    min-height: 40px;
+                    min-width: 40px;
+                }
+            }
+        }
+
+        .button {
+            height: 50px;
+            max-width: 148px;
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: 0%;
+        }
+    }
+
+    #map {
+        width: 100%;
+        max-width: 670px;
+        aspect-ratio: 670/435;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 960px) {
+    .map_div #map {
+        aspect-ratio: auto;
+        height: 100%;
+    }
+}
+
+@media (max-width: 720px) {
+    .map_div {
+        flex-direction: column;
+        align-items: start;
+
+        .contact_cont {
+            max-width: none;
+        }
+
+        #map {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            aspect-ratio: 343/350;
+            max-height: 430px;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .map_div {
+        padding: 50px 0;
+
+        .contact_cont {
+
+            h3 {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 30px;
+                line-height: 130%;
+                letter-spacing: 0%;
+                margin-bottom: 20px;
+            }
+
+            .subtext {
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 28px;
+                letter-spacing: 0%;
+                margin-bottom: 20px;
+            }
+
+            .button {
+                // height: 50px;
+                max-width: none;
+            }
+        }
+
+        #map {
+            width: 100%;
+            max-width: 670px;
+            aspect-ratio: 670/435;
+            border-radius: 20px;
+            overflow: hidden;
+            max-height: none;
+        }
+    }
+}

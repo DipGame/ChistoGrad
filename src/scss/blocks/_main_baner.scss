@@ -1,0 +1,173 @@
+.main_baner_section {
+    background-size: cover;
+    background-position: center;
+
+    * {
+        color: #FFF;
+    }
+}
+
+.main_baner {
+    padding: 125px 0;
+
+    display: flex;
+    gap: 50px;
+
+    .left {
+        width: 100%;
+        max-width: 666px;
+        background-color: #00000080;
+        border-radius: 12px;
+        padding: 20px 20px 30px;
+
+        h1 {
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 48px;
+            line-height: 120%;
+            letter-spacing: 0%;
+            margin-bottom: 15px;
+        }
+
+        .default {
+            margin: 0;
+            margin-bottom: 30px;
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 150%;
+            letter-spacing: 0%;
+
+            * {
+                font-family: Tilda Sans;
+                font-weight: 500;
+                font-size: 18px;
+                line-height: 150%;
+                letter-spacing: 0%;
+            }
+
+            ul {
+                gap: 12px;
+            }
+
+            ol {
+                gap: 12px;
+            }
+        }
+
+        .default ul li::marker {
+            color: #FFF;
+            font-size: 10px;
+        }
+
+        .button {
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: 0%;
+            max-width: 318px;
+        }
+    }
+
+    .video_v1 {
+        width: 100%;
+        max-width: 454px;
+        display: flex;
+        flex-direction: column;
+        padding: 11px;
+        border-radius: 12px;
+        height: auto;
+
+        p {
+            margin: auto auto 0;
+            font-family: Tilda Sans;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            letter-spacing: 0%;
+            position: relative;
+            z-index: 3;
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .main_baner {
+        flex-direction: column;
+
+        .left,
+        .video_v1 {
+            max-width: none;
+        }
+
+        .video_v1 {
+            aspect-ratio: 343/210;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .main_baner {
+        padding: 50px 0;
+        display: flex;
+        gap: 40px;
+
+        .left {
+
+            h1 {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 30px;
+                line-height: 120%;
+                letter-spacing: 0%;
+                margin-bottom: 15px;
+            }
+
+            .default {
+                margin: 0;
+                margin-bottom: 20px;
+
+                * {
+                    font-family: Tilda Sans;
+                    font-weight: 500;
+                    font-size: 16px;
+                    line-height: 150%;
+                    letter-spacing: 0%;
+                }
+            }
+
+            .button {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 100%;
+                letter-spacing: 0%;
+                max-width: 318px;
+            }
+        }
+
+        .video_v1 {
+            width: 100%;
+            max-width: 454px;
+            display: flex;
+            flex-direction: column;
+            padding: 11px;
+            border-radius: 12px;
+            height: auto;
+            background-size: cover;
+            background-position: center;
+
+            p {
+                margin: auto auto 0;
+                font-family: Tilda Sans;
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 150%;
+                letter-spacing: 0%;
+                position: relative;
+                z-index: 3;
+            }
+        }
+    }
+}

@@ -1,0 +1,85 @@
+.main_about {
+    padding: 90px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+
+    * {
+        text-align: center;
+    }
+
+    .top {
+        font-family: Inter;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #0072DE;
+    }
+
+    h2 {
+        font-family: Tilda Sans;
+        font-weight: 700;
+        font-size: 40px;
+        line-height: 130%;
+        letter-spacing: 0%;
+    }
+
+    .default {
+        font-family: Tilda Sans;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 150%;
+        letter-spacing: 0%;
+        margin: 0;
+        color: #4B5563;
+
+        * {
+            font-family: Tilda Sans;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 150%;
+            letter-spacing: 0%;
+            color: #4B5563;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .main_about {
+        padding: 50px 0;
+
+        .top {
+            font-family: Inter;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 24px;
+            letter-spacing: 0%;
+        }
+
+        h2 {
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 130%;
+            letter-spacing: 0%;
+        }
+
+        .default {
+            font-family: Tilda Sans;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0%;
+
+            * {
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 150%;
+                letter-spacing: 0%;
+            }
+        }
+    }
+}
