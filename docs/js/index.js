@@ -508,7 +508,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function addLisSelect(select) {
                 checkSelect(select);
-                select.addEventListener('click', check_2 = () => {
+                select.addEventListener('change', check_2 = () => {
                     checkSelect(select);
                     if (allCheck()) {
                         formBtn.disabled = false;
@@ -519,7 +519,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             function removeLisSelect(select) {
-                select.removeEventListener('click', check_2)
+                select.removeEventListener('change', check_2)
             }
 
             let check_3;
@@ -679,7 +679,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     //             })
                     //     });
                     // });
-                    handleTextGood();
+                    setTimeout(() => {
+                        handleTextGood();
+                    }, 2000);
                 }
 
             })
