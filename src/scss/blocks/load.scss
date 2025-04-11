@@ -1,0 +1,19 @@
+.load_svg {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transition: .5s;
+    transform: translate(-50%, -50%);
+    z-index: 20;
+    visibility: hidden;
+    opacity: 0;
+    max-width: 64px;
+    max-height: 64px;
+    min-height: 64px;
+    min-width: 64px;
+}
+
+.load_svg.open {
+    visibility: visible;
+    opacity: 1;
+}

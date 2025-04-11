@@ -101,8 +101,8 @@
             .select_cont.err {
                 .help_cont {
                     select {
-                        color: #EA4C2A;
-                        border: 1px solid #EA4C2A;
+                        color: #EA4334;
+                        border: 1px solid #EA4334;
                     }
                 }
             }
@@ -137,6 +137,7 @@
 
                 .checkbox_cont {
                     display: flex;
+                    gap: 10px;
                     justify-content: space-between;
                     width: 100%;
                     border: 1px solid #B4D1E0;
@@ -151,8 +152,8 @@
 
             .select_cont.err {
                 .checkbox_cont {
-                    color: #EA4C2A;
-                    border: 1px solid #EA4C2A;
+                    color: #EA4334;
+                    border: 1px solid #EA4334;
                 }
             }
         }
@@ -211,11 +212,11 @@
 
                 input,
                 input::placeholder {
-                    color: #EA4C2A;
+                    color: #EA4334;
                 }
 
                 input {
-                    border: 1px solid #EA4C2A;
+                    border: 1px solid #EA4334;
                 }
             }
         }
@@ -298,6 +299,117 @@
         background-color: #ff8368;
         border-radius: 6px;
         border: 1px solid #B4D1E0;
-        
+
+    }
+}
+
+@media (max-width: 960px) {
+    .form_calc form .cont_2 .select_cont .checkbox_cont {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .form_calc form .cont_3 {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 720px) {
+    .form_calc form .cont_1 {
+        flex-direction: column;
+    }
+
+    .form_calc form .cont_1 .select_cont {
+        width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .form_calc_section {
+        margin-bottom: 0;
+        background-color: #F7F9FA;
+        padding: 0;
+    }
+
+    .form_calc {
+        margin: 30px auto;
+        padding: 0 30px;
+        border-radius: 0;
+
+        h2 {
+            text-align: center;
+        }
+
+        .subtext {
+            font-family: Tilda Sans;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 140%;
+            letter-spacing: 0%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+
+            .cont_1 {
+                display: flex;
+                gap: 30px;
+                margin-bottom: 20px;
+
+                .select_cont {
+
+                    .select_name {
+                        span {
+                            color: #EA4334;
+                        }
+                    }
+
+                }
+            }
+
+            .cont_2 {
+                margin-bottom: 20px;
+
+                .select_cont {
+
+
+                    .select_name {
+                        span {
+                            color: #EA4334;
+                        }
+                    }
+
+                    .checkbox_cont {
+                        grid-template-columns: repeat(2, 1fr);
+                        gap: 20px 10px;
+                    }
+                }
+            }
+
+            .cont_3 {
+                gap: 20px;
+
+                .select_cont {
+
+                    .select_name {
+                        span {
+                            color: #EA4334;
+                        }
+                    }
+                }
+            }
+        }
+
+        .help_cont_2 {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 30px;
+        }
+    }
+
+    .form_calc form [type=submit] {
+        margin: 0;
     }
 }

@@ -17,6 +17,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
 
+    let loadSvg = document.getElementById('load-svg');
+
+    function addLoad() {
+        addClass(loadSvg, 'open');
+    }
+    function removeLoad() {
+        removeClass(loadSvg, 'open');
+    }
+
     if (header.querySelector('.btn_open_menu')) {
         const btn_open_menu = header.querySelector('.btn_open_menu');
         const btn_close_menu = header.querySelector('.btn_close_menu');
@@ -211,6 +220,64 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    if (document.querySelector('.quest')) {
+
+        const quest = document.querySelector('.quest');
+
+        if (quest.querySelector(".sect .title")) {
+            const titles = quest.querySelectorAll(".sect .title");
+
+            titles.forEach((title) => {
+
+                let sect_check = title.closest(".sect"); // Находим родительский .sect
+                let cont_check = sect_check.querySelector(".cont"); // Находим .cont внутри .sect
+
+
+
+                if (sect_check.classList.contains("active")) {
+                    // Вычисляем реальную высоту содержимого
+                    cont_check.style.height = "auto"; // Временно устанавливаем высоту в "auto"
+                    const height = cont_check.scrollHeight; // Получаем высоту содержимого
+                    cont_check.style.height = "0"; // Возвращаем высоту к 0 для анимации
+                    setTimeout(() => {
+                        cont_check.style.height = `${height}px`; // Устанавливаем высоту для анимации
+                    }, 10); // Небольшая задержка для корректной работы браузера
+                } else {
+                    // Анимируем закрытие
+                    cont_check.style.height = `${cont_check.scrollHeight}px`; // Фиксируем текущую высоту
+                    setTimeout(() => {
+                        cont_check.style.height = "0"; // Уменьшаем высоту до 0
+                    }, 10); // Небольшая задержка для корректной работы браузера
+                }
+
+                sect_check.addEventListener('click', () => {
+                    const cont = sect_check.querySelector(".cont"); // Находим .cont внутри .sect
+
+                    // Переключаем класс active
+                    sect_check.classList.toggle("active");
+
+                    if (sect_check.classList.contains("active")) {
+                        // Вычисляем реальную высоту содержимого
+                        cont.style.height = "auto"; // Временно устанавливаем высоту в "auto"
+                        const height = cont.scrollHeight; // Получаем высоту содержимого
+                        cont.style.height = "0"; // Возвращаем высоту к 0 для анимации
+                        setTimeout(() => {
+                            cont.style.height = `${height}px`; // Устанавливаем высоту для анимации
+                        }, 10); // Небольшая задержка для корректной работы браузера
+                    } else {
+                        // Анимируем закрытие
+                        cont.style.height = `${cont.scrollHeight}px`; // Фиксируем текущую высоту
+                        setTimeout(() => {
+                            cont.style.height = "0"; // Уменьшаем высоту до 0
+                        }, 10); // Небольшая задержка для корректной работы браузера
+                    }
+                })
+
+            });
+        }
+
+    }
+
     if (document.querySelector(".sect_reit_cont")) {
         const sectCont = document.querySelector(".sect_reit_cont");
 
@@ -290,6 +357,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let formBtn = formSect.querySelector("[type='submit']");
             let nameInp = formSect.querySelector("[name='name']");
             let phoneInp = formSect.querySelector("[name='phone']");
+            let emailInp = formSect.querySelector("[name='email']");
 
             let selectType = formSect.querySelector("[name='type']");
             let selectSquare = formSect.querySelector("[name='square']");
@@ -496,7 +564,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function clearInputs(input) {
                 removeLisInput(input);
-                
+
                 removeClass(checkBoxBtn, 'err');
                 removeClass(checkBoxBtn, 'checked');
                 input.value = '';
@@ -513,12 +581,18 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             function handleTextGood() {
+                removeLoad();
                 titlePopupCheck.textContent = 'Спасибо за заявку! Скоро с вами свяжется наш консультант!';
                 removeClass(formSect, 'open');
                 addClass(overlay, 'open')
                 addClass(popupCheck, 'open')
-                clearInputs(nameInp);
+                if (nameInp) {
+                    clearInputs(nameInp);
+                }
                 clearInputs(phoneInp);
+                if (emailInp) {
+                    clearInputs(emailInp);
+                }
                 if (form.classList.contains("calc")) {
                     clearSelects(selectSquare);
                     clearSelects(selectType);
@@ -532,6 +606,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             function handleTextNoGood() {
+                removeLoad();
                 titlePopupCheck.textContent = 'Повторите попытку позже';
                 removeClass(formSect, 'open');
                 addClass(popupCheck, 'open');
@@ -543,6 +618,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
 
             function handleTextError() {
+                removeLoad();
                 titlePopupCheck.textContent = 'Что-то пошло не так';
                 removeClass(formSect, 'open');
                 addClass(popupCheck, 'open');
@@ -576,6 +652,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
 
                 if (allCheck()) {
+                    addLoad();
                     // grecaptcha.ready(function () {
                     //     grecaptcha.execute('6Lfk9qspAAAAALXnyJqhAd6kX-ZFapXhfIN0DmQ-', { action: 'submit' }).then(function (token) {
                     //         let formData = new FormData();
