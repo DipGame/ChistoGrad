@@ -238,6 +238,12 @@
             background-color: #FFF;
             border: 1px solid #0080F7;
         }
+
+        [type=submit][disabled]:hover {
+            background-color: #1DAB5F;
+            color: #FFF !important;
+            border: 1px solid #1DAB5F;
+        }
     }
 }
 
