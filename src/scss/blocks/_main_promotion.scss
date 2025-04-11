@@ -1,0 +1,196 @@
+.main_promotion_sections {
+    margin-bottom: 90px;
+}
+
+.main_promotion {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .bot_cont {
+        padding: 0 16px;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .button_v2 {
+            height: 50px;
+            max-width: 112px;
+            margin: 40px auto 0;
+            border: 1px solid #B4D1E0;
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0%;
+            color: #0B111F;
+        }
+    }
+}
+
+.swiperPromotion {
+    width: 100%;
+    padding: 0 16px;
+
+    .swiper-slide {
+        position: relative;
+        border-radius: 16px;
+        padding: 30px;
+        height: auto;
+        transition: .5s;
+        overflow: hidden;
+
+        img {
+            position: absolute;
+            z-index: -1;
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            object-position: center;
+            height: 120%;
+            right: 0;
+            top: -10%;
+            transform: translateX(40%);
+            border-radius: 50%;
+        }
+
+        h3 {
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 24px;
+            line-height: 140%;
+            letter-spacing: 0%;
+            margin-bottom: 20px;
+            max-width: 300px;
+        }
+
+        .default {
+            margin: 0 0 20px;
+            font-family: Tilda Sans;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            letter-spacing: 0%;
+            max-width: 300px;
+
+            * {
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                letter-spacing: 0%;
+            }
+        }
+
+        .button {
+            max-width: 165px;
+            margin-top: auto;
+            height: 50px;
+            font-family: Tilda Sans;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 100%;
+            letter-spacing: 0%;
+        }
+    }
+}
+
+@media (max-width: 1171px) {
+    .swiperPromotion .swiper-slide img {
+        transform: translateX(70%);
+    }
+}
+
+@media (max-width: 960px) {
+    .swiperPromotion .swiper-slide img {
+        transform: translateX(25%);
+    }
+}
+
+@media (max-width: 720px) {
+    .swiperPromotion .swiper-slide img {
+        transform: translateX(60%);
+    }
+}
+
+@media (max-width: 500px) {
+    .main_promotion_sections {
+        margin-bottom: 50px;
+    }
+
+    .main_promotion {
+
+        h2 {
+            margin-bottom: 20px;
+        }
+    }
+
+    .swiperPromotion {
+        width: 100%;
+        padding: 0 16px;
+        overflow: hidden;
+
+        .swiper-slide {
+            padding: 20px 20px 244px;
+            width: 320px;
+            max-width: 320px;
+
+            img {
+                height: auto;
+                right: auto;
+                top: auto;
+                bottom: 0;
+                left: 50%;
+                width: 361px;
+                min-width: 361px;
+                max-width: 361px;
+                transform: translate(-50%, 40%);
+                border-radius: 50%;
+            }
+
+            h3 {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 140%;
+                letter-spacing: 0%;
+                margin-bottom: 20px;
+                max-width: none;
+            }
+
+            .default {
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 140%;
+                letter-spacing: 0%;
+                max-width: none;
+
+                * {
+                    font-family: Tilda Sans;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 140%;
+                    letter-spacing: 0%;
+                }
+            }
+
+            .button {
+                max-width: none;
+                margin-top: auto;
+            }
+        }
+    }
+}
+
+@media (max-width: 350px) {
+
+    .swiperPromotion .swiper-slide {
+        width: 80vw;
+        max-width: 320px;
+    }
+
+}

@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
         el.classList.toggle(class_name);
     }
 
+
+
     const header = document.querySelector('header');
     const main = document.querySelector('main');
     const footer = document.querySelector('footer');
@@ -91,6 +93,68 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    if (document.querySelector('.checkbox')) {
+        const checkboxs = document.querySelectorAll('.checkbox');
+
+        checkboxs.forEach(el => {
+            let checkBoxBtn = el.querySelector('.check-box-btn');
+
+            checkBoxBtn.addEventListener('click', () => {
+                if (checkBoxBtn.getAttribute('data-toggle') == 'y') {
+                    toggleClass(el, 'checked');
+                } else {
+                    addClass(el, 'checked');
+                    removeClass(el, 'err');
+                }
+            })
+        });
+    }
+
+    if (document.querySelector('.max-stroke-cont')) {
+        const maxStrokeConts = document.querySelectorAll('.max-stroke-cont');
+
+        maxStrokeConts.forEach(maxStrokeCont => {
+            let maxStroke = maxStrokeCont.querySelector('.max-stroke');
+            let maxMobStroke = maxStroke.getAttribute('data-mob-max-stroke');
+            let btnMore = maxStrokeCont.querySelector('.btn-more');
+            let btnMoreText = btnMore.textContent.trim();
+            let lineHeight = parseInt(window.getComputedStyle(maxStroke).lineHeight);
+            let lineCount = Math.ceil(maxStroke.scrollHeight / lineHeight) - 1;
+
+            if (maxMobStroke) {
+                if (lineCount > 4 && window.screen.width > 500) {
+                    removeClass(btnMore, 'invise');
+                } else if (lineCount > maxMobStroke && window.screen.width < 501) {
+                    removeClass(btnMore, 'invise');
+                }
+            } else {
+                if (lineCount > 4 && window.screen.width > 500) {
+                    removeClass(btnMore, 'invise');
+                } else if (lineCount > 6 && window.screen.width < 501) {
+                    removeClass(btnMore, 'invise');
+                }
+            }
+
+
+            btnMore.addEventListener('click', () => {
+                if (btnMore.classList.contains('open')) {
+                    addClass(maxStroke, 'max-stroke');
+                    removeClass(btnMore, 'open');
+                    btnMore.textContent = btnMoreText;
+                } else {
+                    removeClass(maxStroke, 'max-stroke');
+                    addClass(btnMore, 'open');
+                    btnMore.textContent = 'скрыть';
+                }
+            })
+
+        });
+    }
+
+
+
+
+
     if (document.querySelector('.sect_filt_v1')) {
         const sect_filt_v1 = document.querySelector('.sect_filt_v1');
         const all_btn_filt_v1 = sect_filt_v1.querySelectorAll('.btn_filt_v1');
@@ -147,6 +211,48 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    if (document.querySelector(".sect_reit_cont")) {
+        const sectCont = document.querySelector(".sect_reit_cont");
+
+        const oneReitCont = sectCont.querySelectorAll(".one-reit-cont");
+
+        oneReitCont.forEach(element => {
+            let ratingElement = element.querySelector(".reit");
+            let stars = element.querySelectorAll(".star");
+
+            // Получаем рейтинг из текстового содержимого
+            let rating = parseFloat(ratingElement.textContent.trim());
+
+            // Проходим по всем звездам
+            stars.forEach((star, index) => {
+
+                let gradient = star.querySelector("linearGradient");
+                let stop1 = gradient.querySelector("stop[offset='100%']");
+                let stop2 = gradient.querySelector("stop[offset='0%']");
+
+                // Вычисляем процент заполнения для текущей звезды
+                let starIndex = index + 1; // Индекс звезды (начиная с 1)
+                let fillPercentage;
+
+                if (rating >= starIndex) {
+                    // Если рейтинг больше или равен индексу звезды, заливаем полностью
+                    fillPercentage = 100;
+                } else if (rating > starIndex - 1) {
+                    // Если рейтинг частично попадает на эту звезду, вычисляем процент
+                    fillPercentage = (rating - (starIndex - 1)) * 100;
+                } else {
+                    // Если рейтинг меньше индекса звезды, не заливаем
+                    fillPercentage = 0;
+                }
+
+                // Устанавливаем процент заливки для градиента
+                stop1.setAttribute("offset", `${fillPercentage}%`);
+                stop2.setAttribute("offset", `${fillPercentage}%`);
+            });
+        });
+    }
+
+
     if (document.querySelector('form')) {
         var overlay = document.querySelector('.overlay');
         var popupCheck = document.querySelector('.popupCheck')
@@ -184,6 +290,69 @@ document.addEventListener("DOMContentLoaded", function () {
             let formBtn = formSect.querySelector("[type='submit']");
             let nameInp = formSect.querySelector("[name='name']");
             let phoneInp = formSect.querySelector("[name='phone']");
+
+            let selectType = formSect.querySelector("[name='type']");
+            let selectSquare = formSect.querySelector("[name='square']");
+            let typeCheckBoxs = formSect.querySelectorAll(".select_cont .checkbox");
+            let checkBoxBtn = formSect.querySelector("[data-processing]");
+
+            function allCheck() {
+                if (form.classList.contains("calc")) {
+                    if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17) && checkSelect(selectType) && checkSelect(selectSquare) && checkTypeCheckBoxs(typeCheckBoxs) && checkCheckBox(checkBoxBtn)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                } else {
+                    if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17) && checkCheckBox(checkBoxBtn)) {
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+            }
+
+            function checkCheckBox(checkbox) {
+                if (checkbox.classList.contains('checked')) {
+                    removeClass(checkbox, 'err');
+                    return true;
+                } else {
+                    addClass(checkbox, 'err');
+                    return false;
+                }
+            }
+
+            function checkTypeCheckBoxs(array) {
+                let check;
+                let parant;
+                array.forEach(element => {
+                    parant = element.closest('.select_cont');
+                    if (element.classList.contains('checked')) {
+                        check = true;
+                    }
+                });
+                if (check) {
+                    removeClass(parant, 'err');
+                    return true;
+                } else {
+                    addClass(parant, 'err');
+                    formBtn.disabled = true;
+                    return false;
+                }
+            }
+
+            function checkSelect(select) {
+
+
+                if (select.value.length > 0) {
+                    removeClass(select.closest('.select_cont'), 'err');
+                    return true;
+                } else {
+                    addClass(select.closest('.select_cont'), 'err');
+                    formBtn.disabled = true;
+                    return false;
+                }
+            }
 
             window.addEventListener("DOMContentLoaded", function () {
                 [].forEach.call(document.querySelectorAll("[name='phone']"), function (input) {
@@ -255,7 +424,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 checkInputsValid(input, num);
                 input.addEventListener('input', check = () => {
                     checkInputsValid(input, num);
-                    if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17)) {
+                    if (allCheck()) {
                         formBtn.disabled = false;
                     } else {
                         formBtn.disabled = true;
@@ -267,8 +436,77 @@ document.addEventListener("DOMContentLoaded", function () {
                 input.removeEventListener('input', check)
             }
 
+            let check_2;
+
+            function addLisSelect(select) {
+                checkSelect(select);
+                select.addEventListener('click', check_2 = () => {
+                    checkSelect(select);
+                    if (allCheck()) {
+                        formBtn.disabled = false;
+                    } else {
+                        formBtn.disabled = true;
+                    }
+                })
+            }
+
+            function removeLisSelect(select) {
+                select.removeEventListener('click', check_2)
+            }
+
+            let check_3;
+
+            function addLisCheck(array) {
+                checkTypeCheckBoxs(array);
+                array.forEach(element => {
+                    element.addEventListener('click', check_3 = () => {
+                        checkTypeCheckBoxs(array);
+                        if (allCheck()) {
+                            formBtn.disabled = false;
+                        } else {
+                            formBtn.disabled = true;
+                        }
+                    })
+                });
+            }
+
+            function removeLisCheck(array) {
+                array.forEach(element => {
+                    element.removeEventListener('click', check_3)
+                });
+            }
+
+            let check_4;
+
+            function addLisCheckBox(checkbox) {
+                checkCheckBox(checkbox);
+                checkbox.addEventListener('click', check_4 = () => {
+                    checkCheckBox(checkbox);
+                    if (allCheck()) {
+                        formBtn.disabled = false;
+                    } else {
+                        formBtn.disabled = true;
+                    }
+                })
+            }
+
+            function removeLisCheckBox(checkbox) {
+                checkbox.removeEventListener('click', check_4);
+            }
+
             function clearInputs(input) {
+                removeClass(checkBoxBtn, 'err');
+                removeClass(checkBoxBtn, 'checked');
                 input.value = '';
+            }
+
+            function clearSelects(select) {
+                select.selectedIndex = 0;
+            }
+            function clearTypes(array) {
+                array.forEach(element => {
+                    removeClass(element, "checked");
+                });
             }
 
             function handleTextGood() {
@@ -278,6 +516,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 addClass(popupCheck, 'open')
                 clearInputs(nameInp);
                 clearInputs(phoneInp);
+                if (form.classList.contains("calc")) {
+                    clearSelects(selectSquare);
+                    clearSelects(selectType);
+                    clearTypes(typeCheckBoxs);
+                }
                 setTimeout(() => {
                     document.querySelectorAll('.open').forEach(el => {
                         removeClass(el, 'open');
@@ -315,7 +558,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 addLisInput(nameInp, 1);
                 addLisInput(phoneInp, 17);
 
-                if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17)) {
+                removeLisCheckBox(checkBoxBtn);
+                addLisCheckBox(checkBoxBtn);
+
+                if (form.classList.contains("calc")) {
+                    removeLisCheck(typeCheckBoxs);
+                    addLisCheck(typeCheckBoxs);
+
+                   
+
+                    removeLisSelect(selectType);
+                    addLisSelect(selectType);
+
+                    removeLisSelect(selectSquare);
+                    addLisSelect(selectSquare);
+                }
+
+                if (allCheck()) {
                     // grecaptcha.ready(function () {
                     //     grecaptcha.execute('6Lfk9qspAAAAALXnyJqhAd6kX-ZFapXhfIN0DmQ-', { action: 'submit' }).then(function (token) {
                     //         let formData = new FormData();
@@ -344,6 +603,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     // });
                     handleTextGood();
                 }
+
             })
         });
     }

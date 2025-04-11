@@ -74,6 +74,14 @@ h6 {
 
 @media (max-width: 500px) {
 
+	body * {
+		font-family: Tilda Sans;
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 150%;
+		letter-spacing: 0%;
+	}
+
 	h1 {
 		font-family: Tilda Sans;
 		font-weight: 700;
@@ -98,14 +106,6 @@ h6 {
 		font-weight: 700;
 		font-size: 20px;
 		line-height: 140%;
-		letter-spacing: 0%;
-	}
-
-	body * {
-		font-family: Tilda Sans;
-		font-weight: 400;
-		font-size: 14px;
-		line-height: 150%;
 		letter-spacing: 0%;
 	}
 }
