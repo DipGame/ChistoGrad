@@ -117,6 +117,10 @@ header.open .header_overlay {
     }
 }
 
+header.no-line .header_cont {
+    border-bottom: none;
+}
+
 .header_hidd_cont {
     position: relative;
     padding: 0 16px;
@@ -394,6 +398,14 @@ header.open .header_overlay {
         }
 
     }
+}
+
+header.no-line .header_hidd_cont .menu_cont_2 {
+    // border-top: none;
+}
+
+header.no-line .header_hidd_cont {
+    border-bottom: 1px solid #D9D9D9;
 }
 
 @media (min-width: 1171px) {

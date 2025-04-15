@@ -1,0 +1,184 @@
+.main_rews_section.v2 {
+    padding: 0 16px 90px;
+    margin-bottom: 0;
+}
+
+
+.service_rews {
+    margin-top: 70px;
+    margin-bottom: 40px;
+
+    h2 {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+
+        .card {
+            background-color: #FFF;
+            padding: 30px;
+            border-radius: 20px;
+
+            h3 {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 20px;
+                letter-spacing: 0%;
+                margin-bottom: 20px;
+            }
+
+            .default {
+                margin: 0 0 20px;
+                padding: 0 0 20px;
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 140%;
+                letter-spacing: 0%;
+                border-bottom: 1px solid #D1E2EB;
+
+                * {
+                    font-family: Tilda Sans;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 140%;
+                    letter-spacing: 0%;
+                }
+            }
+
+            .bot {
+                display: flex;
+                gap: 15px;
+                justify-content: space-between;
+                align-items: center;
+
+                .left {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+
+                    h4 {
+                        font-family: Tilda Sans;
+                        font-weight: 700;
+                        font-size: 18px;
+                        line-height: 24px;
+                        letter-spacing: 0%;
+                    }
+
+                    span {
+                        font-family: Tilda Sans;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 20px;
+                        letter-spacing: 0%;
+                        color: #656B70;
+                    }
+                }
+
+                .right {
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                    transition: .5s;
+                    flex-wrap: nowrap;
+
+                    svg {
+                        max-width: 24px;
+                        max-height: 24px;
+                        min-height: 24px;
+                        min-width: 24px;
+                    }
+
+                    p {
+                        font-family: Tilda Sans;
+                        font-weight: 500;
+                        font-size: 16px;
+                        line-height: 24px;
+                        letter-spacing: 0%;
+                        color: #0080F7;
+                        white-space: nowrap;
+                    }
+
+                    &:hover {
+                        transition: .5s;
+                        transform: scale(1.05);
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 960px) {
+    .service_rews .grid {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 500px) {
+    .service_rews {
+        margin-top: 50px;
+        margin-bottom: 20px;
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        .grid {
+            gap: 20px;
+
+            .card {
+                padding: 20px;
+
+                h3 {
+                    font-family: Tilda Sans;
+                    font-weight: 700;
+                    font-size: 18px;
+                    line-height: 20px;
+                    letter-spacing: 0%;
+                }
+
+                .default {
+                    font-family: Tilda Sans;
+                    font-weight: 400;
+                    font-size: 14px;
+                    line-height: 140%;
+                    letter-spacing: 0%;
+
+                    * {
+                        font-family: Tilda Sans;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 140%;
+                        letter-spacing: 0%;
+                    }
+                }
+
+                .bot {
+                    display: flex;
+                    gap: 20px;
+                    flex-direction: column;
+                    align-items: start;
+
+                    .left {
+                        display: flex;
+                        flex-direction: column;
+                        gap: 5px;
+                    }
+
+                }
+            }
+        }
+    }
+
+    .main_rews_section.v2 {
+        padding: 0 16px 50px;
+        margin-bottom: 0;
+    }
+}

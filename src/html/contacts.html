@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Стартовый шаблон</title>
+	<link rel="stylesheet" href="./fonts/Inter.css" />
+	<link rel="stylesheet" href="./fonts/TildaSans.css" />
+
+	<link rel="stylesheet" href="./css/jquery.fancybox.css" />
+	<link rel="stylesheet" href="./css/swiper-bundle.css" />
+	<link rel="stylesheet" href="./css/main.css" />
+
+	<script src="https://api-maps.yandex.ru/2.1/?apikey=2e485074-4e7a-4d9b-9e83-432aa96ddebf&lang=ru_RU"
+		type="text/javascript"></script>
+
+	<script src="./js/jquery-3.7.1.min.js"></script>
+	<script src="./js/jquery.fancybox.js"></script>
+	<script src="./js/swiper-bundle.js"></script>
+</head>
+
+<body>
+	@@include('blocks/load.html')
+	@@include('blocks/popupCheck.html')
+	@@include('blocks/header-no-line.html')
+	<main>
+         @@include('blocks/bread.html')
+         @@include('blocks/_title_contacts.html')
+         @@include('blocks/_contacts.html')
+	</main>
+	@@include('blocks/footer_2.html')
+	<script src="./js/addSwiper.js"></script>
+	<script src="./js/copyElements.js"></script>
+	<script src="./js/index.js"></script>
+	<script src="./js/map.js"></script>
+</body>
+
+</html>

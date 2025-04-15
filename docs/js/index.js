@@ -26,6 +26,23 @@ document.addEventListener("DOMContentLoaded", function () {
         removeClass(loadSvg, 'open');
     }
 
+    if (document.querySelector(".dot")) {
+        const dots = document.querySelectorAll(".dot");
+
+        dots.forEach(dot => {
+            dot.addEventListener("mouseenter", () => {
+                // Устанавливаем z-index для активной точки
+                dots.forEach(d => d.classList.remove("active")); // Убираем класс active у всех точек
+                dot.classList.add("active"); // Добавляем класс active текущей точке
+            });
+
+            dot.addEventListener("mouseleave", () => {
+                // Убираем класс active при уходе курсора
+                dot.classList.remove("active");
+            });
+        });
+    }
+
     if (header.querySelector('.btn_open_menu')) {
         const btn_open_menu = header.querySelector('.btn_open_menu');
         const btn_close_menu = header.querySelector('.btn_close_menu');
@@ -116,6 +133,146 @@ document.addEventListener("DOMContentLoaded", function () {
                     removeClass(el, 'err');
                 }
             })
+        });
+    }
+
+    if (document.querySelector('.more_cont_v1')) {
+
+        const more_conts = document.querySelectorAll('.more_cont_v1');
+
+        more_conts.forEach(cont => {
+            let dataId = cont.getAttribute('data-id');
+            let more_btns = document.querySelector(`.more_btn_v1[data-id="${dataId}"]`);
+            let more_btns_data_mob = more_btns.getAttribute('data-mob');
+            let more_btns_data_num = more_btns.getAttribute('data-more-num');
+            let more_cards = cont.querySelectorAll('.card_v1');
+            
+            if (more_cards.length <= more_btns_data_num) {
+                addClass(more_btns, 'invise');
+            }
+
+            if (more_btns_data_num) {
+                more_btns_data_num = more_btns_data_num - 1;
+            }
+
+            if (more_btns_data_mob && more_btns_data_mob == "y") {
+                if (more_btns_data_num) {
+                    if (window.screen.width > 500) {
+                        let num = 0;
+                        more_cards.forEach(card => {
+                            if (num > more_btns_data_num) {
+                                addClass(card, 'invise');
+                            }
+                            num++;
+                        });
+
+                        if (num <= more_btns_data_num) {
+                            addClass(more_btns, 'invise');
+                        } else {
+                            more_btns.addEventListener('click', () => {
+                                more_cards.forEach(card => {
+                                    if (card.classList.contains("invise")) {
+                                        removeClass(card, 'invise');
+                                    }
+                                });
+                                addClass(more_btns, 'invise');
+                            })
+                        }
+                    } else if (window.screen.width < 501) {
+                        let num = 0;
+                        more_cards.forEach(card => {
+                            if (num > 4) {
+                                addClass(card, 'invise');
+                            }
+                            num++;
+                        });
+
+                        if (num <= 5) {
+                            addClass(more_btns, 'invise');
+                        } else {
+                            more_btns.addEventListener('click', () => {
+                                more_cards.forEach(card => {
+                                    if (card.classList.contains("invise")) {
+                                        removeClass(card, 'invise');
+                                    }
+                                });
+                                addClass(more_btns, 'invise');
+                            })
+                        }
+                    } else {
+                        addClass(more_btns, 'invise');
+                    }
+                } else {
+                    if (window.screen.width < 501) {
+                        let num = 0;
+                        more_cards.forEach(card => {
+                            if (num > 4) {
+                                addClass(card, 'invise');
+                            }
+                            num++;
+                        });
+
+                        if (num <= 5) {
+                            addClass(more_btns, 'invise');
+                        } else {
+                            more_btns.addEventListener('click', () => {
+                                more_cards.forEach(card => {
+                                    if (card.classList.contains("invise")) {
+                                        removeClass(card, 'invise');
+                                    }
+                                });
+                                addClass(more_btns, 'invise');
+                            })
+                        }
+                    } else {
+                        addClass(more_btns, 'invise');
+                    }
+                }
+            } else {
+                if (more_btns_data_num) {
+                    let num = 0;
+                    more_cards.forEach(card => {
+                        if (num > more_btns_data_num) {
+                            addClass(card, 'invise');
+                        }
+                        num++;
+                    });
+                    
+                    if (num <= more_btns_data_num) {
+                        addClass(more_btns, 'invise');
+                    } else {
+                        more_btns.addEventListener('click', () => {
+                            more_cards.forEach(card => {
+                                if (card.classList.contains("invise")) {
+                                    removeClass(card, 'invise');
+                                }
+                            });
+                            addClass(more_btns, 'invise');
+                        })
+                    }
+                } else {
+                    let num = 0;
+                    more_cards.forEach(card => {
+                        if (num > 4) {
+                            addClass(card, 'invise');
+                        }
+                        num++;
+                    });
+
+                    if (num <= 5) {
+                        addClass(more_btns, 'invise');
+                    } else {
+                        more_btns.addEventListener('click', () => {
+                            more_cards.forEach(card => {
+                                if (card.classList.contains("invise")) {
+                                    removeClass(card, 'invise');
+                                }
+                            });
+                            addClass(more_btns, 'invise');
+                        })
+                    }
+                }
+            }
         });
     }
 
@@ -278,6 +435,130 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
+    if (document.querySelector('.main_cont_v1')) {
+        const conts = document.querySelectorAll('.main_cont_v1');
+
+        conts.forEach(cont => {
+            let btn = cont.querySelector(".btn_toggle_v1");
+            let btnOpenName = btn.getAttribute("data-open-name");
+            let btnCloseName = btn.getAttribute("data-close-name");
+
+            let cont_check = cont.querySelector(".hidd_cont_v1"); // Находим .cont внутри .sect
+
+            if (cont.classList.contains("active")) {
+                if (btnCloseName) {
+                    btn.textContent = btnCloseName;
+                }
+                // Вычисляем реальную высоту содержимого
+                cont_check.style.height = "auto"; // Временно устанавливаем высоту в "auto"
+                const height = cont_check.scrollHeight; // Получаем высоту содержимого
+                cont_check.style.height = "0"; // Возвращаем высоту к 0 для анимации
+                setTimeout(() => {
+                    cont_check.style.height = `${height}px`; // Устанавливаем высоту для анимации
+                }, 10); // Небольшая задержка для корректной работы браузера
+            } else {
+                if (btnOpenName) {
+                    btn.textContent = btnOpenName;
+                }
+                // Анимируем закрытие
+                cont_check.style.height = `${cont_check.scrollHeight}px`; // Фиксируем текущую высоту
+                setTimeout(() => {
+                    cont_check.style.height = "0"; // Уменьшаем высоту до 0
+                }, 10); // Небольшая задержка для корректной работы браузера
+            }
+
+            btn.addEventListener('click', () => {
+                // Переключаем класс active
+
+
+
+                cont.classList.toggle("active");
+
+                if (cont.classList.contains("active")) {
+                    if (btnCloseName) {
+                        btn.textContent = btnCloseName;
+                    }
+                    // Вычисляем реальную высоту содержимого
+                    cont_check.style.height = "auto"; // Временно устанавливаем высоту в "auto"
+                    const height = cont_check.scrollHeight; // Получаем высоту содержимого
+                    cont_check.style.height = "0"; // Возвращаем высоту к 0 для анимации
+                    setTimeout(() => {
+                        cont_check.style.height = `${height}px`; // Устанавливаем высоту для анимации
+                    }, 10); // Небольшая задержка для корректной работы браузера
+                } else {
+                    if (btnOpenName) {
+                        btn.textContent = btnOpenName;
+                    }
+                    // Анимируем закрытие
+                    cont_check.style.height = `${cont.scrollHeight}px`; // Фиксируем текущую высоту
+                    setTimeout(() => {
+                        cont_check.style.height = "0"; // Уменьшаем высоту до 0
+                    }, 10); // Небольшая задержка для корректной работы браузера
+                }
+            })
+
+        });
+    }
+    if (document.querySelector('.main_cont_v2')) {
+        const conts = document.querySelectorAll('.main_cont_v2');
+
+        conts.forEach(cont => {
+            let btn = cont.querySelector(".btn_toggle_v2");
+            let btnOpenName = btn.getAttribute("data-open-name");
+            let btnCloseName = btn.getAttribute("data-close-name");
+
+            let cont_check = cont.querySelector(".hidd_cont_v2"); // Находим .cont внутри .sect
+
+            // Функция для обновления высоты контейнера
+            const updateHeight = () => {
+                cont_check.style.height = "auto"; // Временно устанавливаем высоту в "auto"
+                const height = cont_check.scrollHeight; // Получаем высоту содержимого
+                cont_check.style.height = "0"; // Возвращаем высоту к 0 для анимации
+                setTimeout(() => {
+                    cont_check.style.height = `${height}px`; // Устанавливаем высоту для анимации
+                    setTimeout(() => {
+                        cont_check.style.height = "auto"; // В конце анимации устанавливаем height: auto
+                    }, 500); // Задержка должна соответствовать длительности анимации
+                }, 10);
+            };
+
+            if (cont.classList.contains("active")) {
+                if (btnCloseName) {
+                    btn.textContent = btnCloseName;
+                }
+                updateHeight(); // Инициализация высоты при загрузке
+            } else {
+                if (btnOpenName) {
+                    btn.textContent = btnOpenName;
+                }
+                cont_check.style.height = "0"; // Анимируем закрытие
+            }
+
+            btn.addEventListener('click', () => {
+                // Переключаем класс active
+                cont.classList.toggle("active");
+
+                if (cont.classList.contains("active")) {
+                    if (btnCloseName) {
+                        btn.textContent = btnCloseName;
+                    }
+                    updateHeight(); // Обновляем высоту при раскрытии
+                } else {
+                    if (btnOpenName) {
+                        btn.textContent = btnOpenName;
+                    }
+                    // Анимируем закрытие
+                    cont_check.style.height = `${cont_check.scrollHeight}px`; // Фиксируем текущую высоту
+                    setTimeout(() => {
+                        cont_check.style.height = "0"; // Уменьшаем высоту до 0
+                    }, 10);
+                }
+            });
+
+
+        });
+    }
+
     if (document.querySelector(".sect_reit_cont")) {
         const sectCont = document.querySelector(".sect_reit_cont");
 
@@ -366,7 +647,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
             function allCheck() {
                 if (form.classList.contains("calc")) {
-                    if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17) && checkSelect(selectType) && checkSelect(selectSquare) && checkTypeCheckBoxs(typeCheckBoxs) && checkCheckBox(checkBoxBtn)) {
+                    if (form.classList.contains("calc_2")) {
+                        if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17) && checkSelect(selectType) && checkSelect(selectSquare) && checkCheckBox(checkBoxBtn)) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    } else {
+                        if (checkInputsValid(nameInp, 1) && checkInputsValid(phoneInp, 17) && checkSelect(selectType) && checkSelect(selectSquare) && checkTypeCheckBoxs(typeCheckBoxs) && checkCheckBox(checkBoxBtn)) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    }
+                } else if (form.classList.contains("audit")) {
+                    if (checkInputsValid(phoneInp, 17)) {
                         return true;
                     } else {
                         return false;
@@ -565,8 +860,11 @@ document.addEventListener("DOMContentLoaded", function () {
             function clearInputs(input) {
                 removeLisInput(input);
 
-                removeClass(checkBoxBtn, 'err');
-                removeClass(checkBoxBtn, 'checked');
+                if (checkBoxBtn) {
+                    removeClass(checkBoxBtn, 'err');
+                    removeClass(checkBoxBtn, 'checked');
+                }
+
                 input.value = '';
             }
 
@@ -594,9 +892,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     clearInputs(emailInp);
                 }
                 if (form.classList.contains("calc")) {
-                    clearSelects(selectSquare);
-                    clearSelects(selectType);
-                    clearTypes(typeCheckBoxs);
+                    if (form.classList.contains("calc_2")) {
+                        clearSelects(selectSquare);
+                        clearSelects(selectType);
+                    } else {
+                        clearSelects(selectSquare);
+                        clearSelects(selectType);
+                        clearTypes(typeCheckBoxs);
+                    }
                 }
                 setTimeout(() => {
                     document.querySelectorAll('.open').forEach(el => {
@@ -631,24 +934,38 @@ document.addEventListener("DOMContentLoaded", function () {
 
             form.addEventListener('submit', (e) => {
                 e.preventDefault();
-                removeLisInput(nameInp);
                 removeLisInput(phoneInp);
 
-                addLisInput(nameInp, 1);
+                if (nameInp) {
+                    removeLisInput(nameInp);
+                    addLisInput(nameInp, 1);
+                }
                 addLisInput(phoneInp, 17);
 
-                removeLisCheckBox(checkBoxBtn);
-                addLisCheckBox(checkBoxBtn);
+                if (checkBoxBtn) {
+                    removeLisCheckBox(checkBoxBtn);
+                    addLisCheckBox(checkBoxBtn);
+                }
 
                 if (form.classList.contains("calc")) {
-                    removeLisCheck(typeCheckBoxs);
-                    addLisCheck(typeCheckBoxs);
 
-                    removeLisSelect(selectType);
-                    addLisSelect(selectType);
+                    if (form.classList.contains("calc_2")) {
+                        removeLisSelect(selectType);
+                        addLisSelect(selectType);
 
-                    removeLisSelect(selectSquare);
-                    addLisSelect(selectSquare);
+                        removeLisSelect(selectSquare);
+                        addLisSelect(selectSquare);
+                    } else {
+                        removeLisCheck(typeCheckBoxs);
+                        addLisCheck(typeCheckBoxs);
+
+                        removeLisSelect(selectType);
+                        addLisSelect(selectType);
+
+                        removeLisSelect(selectSquare);
+                        addLisSelect(selectSquare);
+                    }
+
                 }
 
                 if (allCheck()) {

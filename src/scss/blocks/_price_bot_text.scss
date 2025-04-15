@@ -1,0 +1,25 @@
+.price_bot_text {
+    padding: 20px 0 50px;
+    margin-bottom: 0;
+
+    h3 {
+        font-family: Tilda Sans;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 140%;
+        letter-spacing: 0%;
+    }
+}
+
+@media (max-width: 500px) {
+    .price_bot_text {
+    
+        h3 {
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 140%;
+            letter-spacing: 0%;
+        }
+    }
+}

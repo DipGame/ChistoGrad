@@ -1,0 +1,205 @@
+.rews_cont_section {
+
+    .bot_v15 {
+        display: flex;
+        flex-direction: column;
+
+        .button_v2 {
+            background: none;
+            margin: 40px auto 0;
+            color: #0B111F;
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0%;
+            max-width: 139px;
+            height: 50px;
+            border: 1px solid #B4D1E0;
+        }
+
+        .button_v2:hover {
+            background-color: #0080F7;
+        }
+    }
+
+}
+
+.video_rews {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+
+    .card {
+        border-radius: 20px;
+        padding: 10px;
+        background-color: #FFF;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+        box-shadow: 0px 5px 20px 0px #262D3312;
+
+
+        .video_v1 {
+            aspect-ratio: 550/290;
+            border-radius: 16px;
+            margin-bottom: 10px;
+        }
+
+        .video_v1::before {
+            opacity: .4;
+        }
+
+        .video_v1:hover::before {
+            opacity: .2;
+        }
+
+        .bot {
+            display: flex;
+            flex-direction: column;
+            padding: 20px 20px 30px;
+
+            .name {
+                font-family: Tilda Sans;
+                font-weight: 700;
+                font-size: 18px;
+                line-height: 24px;
+                letter-spacing: 0%;
+                margin-bottom: 5px;
+            }
+
+            .who {
+                font-family: Tilda Sans;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 20px;
+                letter-spacing: 0%;
+                color: #656B70;
+            }
+
+            .rew_text {
+                margin-top: 20px;
+
+                h4 {
+                    font-family: Tilda Sans;
+                    font-weight: 700;
+                    font-size: 16px;
+                    line-height: 20px;
+                    letter-spacing: 0%;
+                    margin-bottom: 15px;
+                }
+
+                .default {
+                    font-family: Tilda Sans;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 140%;
+                    letter-spacing: 0%;
+                    margin: 0;
+
+
+                    * {
+                        font-family: Tilda Sans;
+                        font-weight: 400;
+                        font-size: 16px;
+                        line-height: 140%;
+                        letter-spacing: 0%;
+                    }
+                }
+
+                .max-stroke {
+                    display: -webkit-box;
+                    -webkit-line-clamp: 4;
+                    -webkit-box-orient: vertical;
+                    overflow: hidden;
+                }
+
+                .btn-more {
+                    font-family: Tilda Sans;
+                    font-weight: 600;
+                    font-size: 16px;
+                    line-height: 140%;
+                    letter-spacing: 0%;
+                    border-bottom: 1px dotted #939699;
+                    color: #939699;
+                    display: inline;
+                    cursor: pointer;
+                    transition: .5s;
+                }
+
+                @media (min-width: 501px) {
+                    .btn-more:hover {
+                        transition: .5s;
+                        opacity: .5;
+                    }
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width: 720px) {
+    .video_rews {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .video_rews {
+
+        .card {
+            .video_v1 {
+                aspect-ratio: 323/170;
+            }
+
+            .bot {
+                padding: 20px 10px 30px;
+
+                .who {
+                    font-family: Tilda Sans;
+                    font-weight: 400;
+                    font-size: 12px;
+                    line-height: 20px;
+                    letter-spacing: 0%;
+                }
+
+                .rew_text {
+
+                    h4 {
+                        font-family: Tilda Sans;
+                        font-weight: 700;
+                        font-size: 14px;
+                        line-height: 20px;
+                        letter-spacing: 0%;
+                    }
+
+                    .default {
+                        font-family: Tilda Sans;
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 140%;
+                        letter-spacing: 0%;
+
+                        * {
+                            font-family: Tilda Sans;
+                            font-weight: 400;
+                            font-size: 14px;
+                            line-height: 140%;
+                            letter-spacing: 0%;
+                        }
+                    }
+
+                    .max-stroke {
+                        display: -webkit-box;
+                        -webkit-line-clamp: 6;
+                        -webkit-box-orient: vertical;
+                        overflow: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

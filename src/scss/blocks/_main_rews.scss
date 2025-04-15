@@ -385,7 +385,8 @@
     }
 }
 
-.swiperRews, .swiperRewsGrid {
+.swiperRews,
+.swiperRewsGrid {
     width: 100%;
 
     .swiper-slide {
@@ -481,9 +482,11 @@
 }
 
 .swiperRewsGrid {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 30px;
     width: 100%;
+
     .swiper-slide {
         width: auto;
         box-sizing: border-box;
@@ -498,7 +501,8 @@
     }
 
     .swiperRewsGrid {
-       flex-direction: column;
+        display: flex;
+        flex-direction: column;
     }
 }
 
@@ -569,7 +573,8 @@
         }
     }
 
-    .swiperRews, .swiperRewsGrid {
+    .swiperRews,
+    .swiperRewsGrid {
         width: 100%;
 
         .swiper-slide {

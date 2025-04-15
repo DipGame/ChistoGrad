@@ -41,6 +41,9 @@
         .before_adres::before {
             background-image: url('./../img/map-pin.svg');
         }
+        .before_time::before {
+            background-image: url('./../img/clock-hour-3.svg');
+        }
 
         .before_1 {
             margin-bottom: 20px;
@@ -56,6 +59,14 @@
         }
 
         .email {
+            font-family: Tilda Sans;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0%;
+        }
+
+        .time {
             font-family: Tilda Sans;
             font-weight: 500;
             font-size: 18px;

@@ -50,10 +50,13 @@ h2 {
 h1.title {
 	margin: 0 auto 30px;
 	width: 100%;
-	max-width: 1170px;
+	max-width: 1202px;
 	padding: 0 16px;
 }
 
+main.grey {
+	background-color: #F9FAFB;
+}
 
 @media (max-width: 500px) {
 	h1.title {
@@ -333,7 +336,7 @@ button:disabled:hover {
 		gap: 10px 20px;
 		align-items: center;
 		flex-wrap: wrap;
-		padding: 41px 16px 50px;
+		padding: 41px 0 50px;
 		width: 100%;
 		max-width: 1170px;
 
@@ -344,6 +347,15 @@ button:disabled:hover {
 			line-height: 18px;
 			letter-spacing: 0%;
 			color: #6B7280;
+			display: flex;
+			align-items: center;
+
+			svg {
+				max-width: 20px;
+				max-height: 20px;
+				min-height: 20px;
+				min-width: 20px;
+			}
 
 			a {
 				font-family: Tilda Sans;
@@ -361,12 +373,17 @@ button:disabled:hover {
 	}
 }
 
+.bread.grey {
+	background-color: #F9FAFB;
+}
+
 @media (max-width: 500px) {
 	.bread {
 
 		ul {
 			overflow-x: scroll;
 			flex-wrap: nowrap;
+			padding: 21px 0;
 
 			li {
 				white-space: nowrap;
